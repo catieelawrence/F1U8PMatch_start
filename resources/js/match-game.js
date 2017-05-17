@@ -5,6 +5,11 @@ var MatchGame = {};
   Renders a 4x4 board of cards.
 */
 
+$(document).ready(function() {
+  MatchGame.renderCards(cardValues, $game);
+}
+);
+
 /*
   Generates and returns an array of matching card values.
  */
@@ -32,6 +37,8 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
+  $game.empty();
+
   var cardColors = ['hsl(25,85%,65%)','hsl(55,85%,65%)','hsl(90,85%,65%)','hsl(160,85%,65%)',
   'hsl(220,85%,65%)','hsl(265,85%,65%)','hsl(310,85%,65%)','hsl(360,85%,65%)'];
 
@@ -40,6 +47,7 @@ MatchGame.renderCards = function(cardValues, $game) {
     $card.data('value', cardValues[i]);
     $card.data('flipped', false);
     $card.data('color',cardColors[cardValues[i]-1]);
+    $game.append($card);
   }
 
 };
